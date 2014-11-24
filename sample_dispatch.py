@@ -27,10 +27,8 @@ PREPROCESSING_STEPS = OrderedDict([
 
 ## Alignment Steps and Post-Alignment Steps
 # alignment and post_alignment steps required
-#ALN_STEPS = OrderedDict([
-#        ("bwa", "{bwa} mem -M -t {nthreads} -R '@RG\tID:{read_id}\tPL:illumina\tSM:{sample_id}' -v 1 -p {reference} - | ")])
 ALN_STEPS = OrderedDict([
-        ("bowtie", "{bowtie} -mm -p {nthreads} -v 3 -a -m 600 --best --strata -p {reference} - | ")])
+        ("bwa", "{bwa} mem -M -t {nthreads} -R '@RG\tID:{read_id}\tPL:illumina\tSM:{sample_id}' -v 1 -p {reference} - | ")])
 POST_ALN_STEPS = OrderedDict([
         ("samtools-to-bam", "{samtools} view -b -S -u - > {bam_dir}/{sample_id}.bam")])
 
